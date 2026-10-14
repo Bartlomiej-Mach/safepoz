@@ -1,0 +1,146 @@
+// Dark footer with page links and the optional service-area directory.
+.site-footer {
+  padding-block: 3.75rem 1.5rem;
+  color: var(--color-white);
+  background: var(--color-navy-900);
+}
+.site-footer__areas {
+  padding-bottom: 3rem;
+}
+.site-footer__areas-heading {
+  display: grid;
+  gap: 0.9rem;
+  margin-bottom: 1.75rem;
+}
+.site-footer__areas-heading h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+.site-footer__company {
+  display: grid;
+  gap: 2rem;
+  border-top: 1px solid rgb(226 231 238 / 18%);
+  padding-block: 2.5rem;
+}
+.site-footer__experience {
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+}
+.site-footer__experience .eyebrow {
+  color: var(--color-amber-400);
+}
+.site-footer__experience h2 {
+  max-width: 34rem;
+  font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+  line-height: 1.05;
+}
+.site-footer__contact h3 {
+  margin-bottom: 1.25rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.site-footer__details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 1.5rem;
+  margin: 0;
+  dd {
+    margin: 0;
+  }
+}
+.site-footer__details > div:first-child,
+.site-footer__details > div:last-child {
+  grid-column: 1 / -1;
+}
+.site-footer__details dt {
+  margin-bottom: 0.2rem;
+  color: var(--color-gray-200);
+  font-size: 0.7rem;
+}
+.site-footer__details dd,
+.site-footer__details address,
+.site-footer__details a {
+  color: var(--color-white);
+  font-size: 0.85rem;
+  font-style: normal;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  text-decoration: none;
+}
+.site-footer__details a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+.site-footer__city-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.45rem 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.site-footer__city-list li {
+  border-bottom: 1px solid rgb(226 231 238 / 12%);
+  padding-bottom: 0.35rem;
+}
+.site-footer__city-list a {
+  color: var(--color-gray-200);
+  font-size: 0.75rem;
+  text-decoration: none;
+}
+.site-footer__city-list a:hover,
+.site-footer__nav a:hover {
+  color: var(--color-white);
+}
+.site-footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  border-top: 1px solid rgb(226 231 238 / 18%);
+  padding-top: 1.5rem;
+}
+.site-footer__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+.site-footer__nav a {
+  color: var(--color-gray-200);
+  font-size: 0.8125rem;
+  text-decoration: none;
+}
+.site-footer__copyright {
+  width: 100%;
+  color: var(--color-gray-200);
+  font-size: 0.75rem;
+}
+.site-logo--footer .site-logo__mark {
+  width: 1.9rem;
+}
+.site-logo--footer .site-logo__word {
+  font-size: 1rem;
+}
+@media (min-width: 640px) {
+  .site-footer__company {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    align-items: start;
+    gap: 3rem;
+    padding-block: 3rem;
+  }
+  .site-footer__city-list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: 1.5rem;
+  }
+  .site-footer__copyright {
+    width: auto;
+  }
+}
+@media (min-width: 1024px) {
+  .site-footer__city-list {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}

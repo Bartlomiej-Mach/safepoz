@@ -1,0 +1,26 @@
+// Shared section spacing and screen-reader utility.
+.section-pad {
+  padding-block: clamp(4.5rem, 9vw, 7.5rem);
+}
+.site-body:not(.site-body--home) {
+  padding-top: 5rem;
+}
+.sr-only,
+.skip-link:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+.skip-link:focus {
+  position: fixed;
+  z-index: 1000;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.75rem 1rem;
+  color: var(--color-navy-900);
+  background: var(--color-white);
+}

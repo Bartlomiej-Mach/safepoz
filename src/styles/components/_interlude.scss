@@ -1,0 +1,50 @@
+// Technical interlude band built from lightweight CSS linework.
+.interlude {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(4.5rem, 10vw, 8rem);
+  color: var(--color-white);
+  background: var(--color-navy-900);
+}
+.interlude::before {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, var(--color-navy-900) 10%, rgb(20 48 79 / 83%) 100%);
+  content: '';
+}
+.interlude__pattern {
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: 58%;
+  opacity: 0.15;
+  background-image:
+    linear-gradient(rgb(226 231 238 / 24%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(226 231 238 / 24%) 1px, transparent 1px);
+  background-size: 3rem 3rem;
+  mask-image: linear-gradient(90deg, transparent, #000 38%);
+}
+.interlude__content {
+  position: relative;
+  display: grid;
+  max-width: 60rem;
+  gap: 1.25rem;
+}
+.interlude__eyebrow {
+  color: var(--color-amber-400);
+}
+.interlude h2 {
+  max-width: 52rem;
+  text-wrap: balance;
+}
+.interlude p:last-child {
+  max-width: 42rem;
+  color: var(--color-gray-200);
+}
+.interlude__coordinates {
+  position: absolute;
+  right: var(--container-gutter);
+  bottom: 1.5rem;
+  color: rgb(226 231 238 / 42%);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+}

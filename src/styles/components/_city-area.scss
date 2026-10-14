@@ -1,0 +1,202 @@
+// Searchable responsive service-area directory.
+.city-area {
+  background: var(--color-white);
+}
+.city-area__intro {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+.city-area__count {
+  flex: 0 0 auto;
+  color: var(--color-gray-600);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.city-area__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--color-gray-200);
+}
+.city-area__tabs {
+  display: flex;
+  gap: 1.5rem;
+}
+.city-area__tab {
+  position: relative;
+  min-height: 3rem;
+  border: 0;
+  padding: 0.5rem 0;
+  color: var(--color-gray-600);
+  background: transparent;
+  cursor: pointer;
+}
+.city-area__tab::after {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 2px;
+  background: transparent;
+  content: '';
+}
+.city-area__tab.is-active {
+  color: var(--color-navy-900);
+  font-weight: 600;
+}
+.city-area__tab.is-active::after {
+  background: var(--color-red-500);
+}
+.city-area__search {
+  display: flex;
+  width: min(100%, 19rem);
+  min-height: 2.75rem;
+  align-items: center;
+  gap: 0.65rem;
+  border: 1px solid var(--color-gray-200);
+  border-radius: 6px;
+  padding-inline: 0.8rem;
+  color: var(--color-gray-600);
+  background: var(--color-gray-50);
+}
+.city-area__search > i {
+  flex: 0 0 auto;
+  font-size: 1rem;
+}
+.city-area__search input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  color: var(--color-text);
+  background: transparent;
+  font-size: 0.85rem;
+}
+.city-area__search input::placeholder {
+  color: var(--color-gray-600);
+}
+.city-area__search input:focus-visible {
+  outline: 0;
+}
+.city-area__search:focus-within {
+  outline: 3px solid var(--color-amber-400);
+  outline-offset: 3px;
+}
+.city-area__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.city-area__item[hidden] {
+  display: none;
+}
+.city-area__expand {
+  display: none;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1rem;
+  border: 0;
+  padding: 0.5rem 0;
+  color: var(--color-navy-900);
+  background: transparent;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.city-area__expand[hidden] {
+  display: none;
+}
+.city-area__empty {
+  padding-block: 2rem;
+  color: var(--color-gray-600);
+}
+.city-pill {
+  display: flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.3rem;
+  border: 1px solid var(--color-gray-200);
+  border-radius: 6px;
+  padding: 0.55rem 0.7rem;
+  color: var(--color-navy-900);
+  background: var(--color-white);
+  font-size: 0.75rem;
+  line-height: 1.3;
+  text-decoration: none;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+.city-pill .fa-solid {
+  flex: 0 0 auto;
+  color: var(--color-gray-600);
+  font-size: 0.7rem;
+}
+.city-pill:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-red-500);
+  box-shadow: 0 5px 14px rgb(11 27 46 / 7%);
+}
+.city-page {
+  display: grid;
+  min-height: 18rem;
+  align-content: center;
+  gap: 1rem;
+  padding-block: 3rem;
+}
+@media (max-width: 639px) {
+  .city-area.has-filter .city-area__list {
+    max-height: 28rem;
+    overflow: hidden;
+    transition: max-height 300ms ease;
+  }
+  .city-area.has-filter .city-area__list.is-expanded {
+    max-height: 100rem;
+  }
+  .city-area__intro {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  .city-area__toolbar {
+    align-items: stretch;
+    flex-direction: column-reverse;
+    border-bottom: 0;
+  }
+  .city-area__search {
+    width: 100%;
+  }
+  .city-area__expand:not([hidden]) {
+    display: inline-flex;
+  }
+}
+@media (min-width: 640px) {
+  .city-area__list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .city-pill {
+    padding-inline: 0.85rem;
+    font-size: 0.8rem;
+  }
+}
+@media (min-width: 768px) {
+  .city-area__list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1024px) {
+  .city-area__list {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}

@@ -1,0 +1,63 @@
+---
+import Button from '../ui/Button.astro';
+import heroOne from '../../assets/images/hero-1.jpg';
+import heroTwo from '../../assets/images/hero-2.jpg';
+import heroThree from '../../assets/images/hero-3.jpg';
+
+const slides = [
+  { image: heroOne, alt: 'Nowoczesny budynek biurowy widziany z poziomu ulicy', number: '01' },
+  { image: heroTwo, alt: 'Architektura budynku zaprojektowanego z myślą o użytkownikach', number: '02' },
+  { image: heroThree, alt: 'Jasne, nowoczesne wnętrze przestrzeni komercyjnej', number: '03' },
+];
+---
+
+<section class="hero" aria-labelledby="hero-title" data-hero>
+  <div class="hero__slides" data-hero-slides>
+    {slides.map((slide, index) => (
+      <div class:list={['hero__slide', { 'is-active': index === 0 }]} aria-hidden={index !== 0} data-hero-slide>
+        <img
+          class="hero__image"
+          src={slide.image.src}
+          alt={slide.alt}
+          width={slide.image.width}
+          height={slide.image.height}
+          fetchpriority={index === 0 ? 'high' : 'auto'}
+          loading={index === 0 ? 'eager' : 'lazy'}
+        />
+      </div>
+    ))}
+  </div>
+  <div class="hero__veil" aria-hidden="true"></div>
+  <div class="hero__content container">
+    <p class="eyebrow hero__eyebrow">Inżynieria bezpieczeństwa pożarowego</p>
+    <h1 id="hero-title">Bezpieczeństwo pożarowe zaprojektowane z inżynierską precyzją.</h1>
+    <p class="hero__lead">
+      Wykonujemy przeglądy, projekty techniczne i dokumentację PPOŻ dla obiektów budowlanych. Zespół
+      SAFEPOŻ tworzą inżynierowie bezpieczeństwa pożarowego — absolwenci Akademii Pożarniczej.
+    </p>
+    <Button href="/kontakt" variant="primary" size="lg">
+      Zapytaj o Ofertę
+    </Button>
+  </div>
+  <div class="hero__controls container" aria-label="Sterowanie slajdami">
+    <span class="hero__slide-count" aria-live="polite" data-hero-count>01 <span>/ 03</span></span>
+    <div class="hero__dots" role="group" aria-label="Wybierz slajd">
+      {slides.map((slide, index) => (
+        <button
+          class:list={['hero__dot', { 'is-active': index === 0 }]}
+          type="button"
+          aria-label={`Pokaż slajd ${index + 1}`}
+          aria-pressed={index === 0 ? 'true' : 'false'}
+          data-hero-dot={index}
+        ></button>
+      ))}
+    </div>
+  </div>
+  <a class="hero__scroll" href="#uslugi"><span aria-hidden="true"></span> Przewiń, aby poznać nas bliżej</a>
+</section>
+
+<script>
+  import { initHero } from '../../scripts/hero';
+
+  initHero();
+</script>

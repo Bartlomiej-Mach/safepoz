@@ -1,0 +1,19 @@
+---
+import ServiceCard from './ServiceCard.astro';
+import { services } from '../../data/services.ts';
+---
+
+<section class="services section-pad" id="uslugi" aria-labelledby="services-title">
+  <div class="container">
+    <div class="section-heading services__heading">
+      <p class="eyebrow">Kompleksowa obsługa PPOŻ</p>
+      <h2 id="services-title">Od okresowego przeglądu do pełnej dokumentacji obiektu.</h2>
+      <p class="section-heading__lead">
+        Dobieramy zakres prac do stanu technicznego budynku, wymagań przepisów oraz celu inwestycji.
+      </p>
+    </div>
+    <div class="services__grid">
+      {services.map((service, index) => <ServiceCard {...service} number={`0${index + 1}`} />)}
+    </div>
+  </div>
+</section>

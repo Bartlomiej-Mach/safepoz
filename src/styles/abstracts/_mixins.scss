@@ -1,0 +1,13 @@
+// Responsive helpers shared across the Sass modules.
+@use 'sass:map';
+@use 'tokens' as tokens;
+
+@mixin respond-to($breakpoint) {
+  @if not map.has-key(tokens.$breakpoints, $breakpoint) {
+    @error 'Unknown breakpoint: #{$breakpoint}.';
+  }
+
+  @media (min-width: map.get(tokens.$breakpoints, $breakpoint)) {
+    @content;
+  }
+}

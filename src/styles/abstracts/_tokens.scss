@@ -1,0 +1,65 @@
+// Design tokens for SAFEPOŻ. CSS custom properties expose them to components.
+$colors: (
+  'navy-900': #0b1b2e,
+  'navy-700': #14304f,
+  'red-500': #d7261e,
+  'red-600': #b51d16,
+  'amber-400': #f5a623,
+  'gray-50': #f5f7fa,
+  'gray-200': #e2e7ee,
+  'gray-600': #5b6778,
+  'text': #0f1a2a,
+  'white': #fff,
+);
+
+$font-families: (
+  'heading': 'Barlow Condensed',
+  'body': 'Inter',
+);
+
+$font-sizes: (
+  'h1': clamp(2.25rem, 5vw, 4rem),
+  'h2': clamp(1.75rem, 3.5vw, 2.75rem),
+  'h3': 1.25rem,
+  'body': 1rem,
+  'eyebrow': 0.8rem,
+);
+
+$spacing: (
+  '1': 0.25rem,
+  '2': 0.5rem,
+  '4': 1rem,
+  '6': 1.5rem,
+  '8': 2rem,
+  '12': 3rem,
+  '20': 5rem,
+  '30': 7.5rem,
+);
+
+$breakpoints: (
+  'sm': 40rem,
+  'md': 48rem,
+  'lg': 64rem,
+  'xl': 80rem,
+);
+
+$radii: (
+  'control': 6px,
+  'card': 12px,
+);
+
+$shadows: (
+  'sm': 0 2px 10px rgb(11 27 46 / 8%),
+  'md': 0 16px 40px rgb(11 27 46 / 14%),
+);
+
+:root {
+  @each $name, $value in $colors {
+    --color-#{$name}: #{$value};
+  }
+
+  --font-heading: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --container-width: 75rem;
+  --container-gutter: clamp(1.25rem, 5vw, 4rem);
+}

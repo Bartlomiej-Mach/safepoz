@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { cities } from '../../data/cities.ts';
+
+export function getStaticPaths() {
+  return cities.map((city) => ({
+    params: { city: city.slug },
+    props: { city },
+  }));
+}
+
+const { city } = Astro.props;
+---
+
+<BaseLayout
+  title={`Usługi PPOŻ ${city.name} | SAFEPOŻ`}
+  description={`Usługi bezpieczeństwa pożarowego w mieście ${city.name}.`}
+>
+  <section class="city-page container" aria-labelledby="city-page-title">
+    <p class="eyebrow">Usługi PPOŻ / obszar działania</p>
+    <h1 id="city-page-title">Usługi PPOŻ {city.name}</h1>
+  </section>
+</BaseLayout>

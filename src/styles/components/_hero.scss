@@ -1,0 +1,132 @@
+// Full-bleed image carousel and high-contrast hero content.
+.hero {
+  position: relative;
+  display: flex;
+  min-height: max(90vh, 48rem);
+  min-height: max(90svh, 48rem);
+  align-items: center;
+  overflow: hidden;
+  color: var(--color-white);
+  background: var(--color-navy-900);
+}
+.hero__slides,
+.hero__slide,
+.hero__image,
+.hero__veil {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.hero__slide {
+  opacity: 0;
+  transition: opacity 900ms ease;
+}
+.hero__slide.is-active {
+  opacity: 1;
+}
+.hero__image {
+  object-fit: cover;
+  object-position: center 45%;
+}
+.hero__veil {
+  background:
+    linear-gradient(90deg, rgb(7 19 34 / 94%) 0%, rgb(7 19 34 / 76%) 44%, rgb(7 19 34 / 16%) 100%),
+    linear-gradient(0deg, rgb(7 19 34 / 52%) 0%, transparent 36%);
+}
+.hero__content {
+  position: relative;
+  z-index: 1;
+  padding-top: 5rem;
+}
+.hero__eyebrow {
+  margin-bottom: 1.5rem;
+  color: var(--color-amber-400);
+}
+.hero h1 {
+  max-width: 56rem;
+  margin-bottom: 1.5rem;
+  font-size: clamp(2.25rem, 5vw, 4rem);
+  line-height: 0.98;
+  text-wrap: balance;
+}
+.hero__lead {
+  max-width: 42rem;
+  margin-bottom: 2rem;
+  color: rgb(255 255 255 / 88%);
+  font-size: clamp(1rem, 1.35vw, 1.125rem);
+  line-height: 1.7;
+}
+.hero__controls {
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  bottom: 2.5rem;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.hero__slide-count {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+.hero__slide-count span {
+  color: rgb(255 255 255 / 55%);
+  font-size: 1rem;
+}
+.hero__dots {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+.hero__dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border: 0;
+  border-radius: 50%;
+  padding: 0;
+  background: rgb(255 255 255 / 45%);
+  cursor: pointer;
+}
+.hero__dot.is-active {
+  background: var(--color-amber-400);
+  box-shadow: 0 0 0 4px rgb(245 166 35 / 20%);
+}
+.hero__scroll {
+  position: absolute;
+  right: var(--container-gutter);
+  bottom: 5.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: rgb(255 255 255 / 72%);
+  font-size: 0.7rem;
+  text-decoration: none;
+  writing-mode: vertical-rl;
+}
+.hero__scroll span {
+  width: 1px;
+  height: 2.5rem;
+  background: var(--color-red-500);
+}
+@media (max-width: 767px) {
+  .hero {
+    min-height: 48rem;
+    min-height: max(90svh, 48rem);
+  }
+  .hero__veil {
+    background: linear-gradient(90deg, rgb(7 19 34 / 90%), rgb(7 19 34 / 45%));
+  }
+  .hero__content {
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+  }
+  .hero__controls {
+    bottom: 1.5rem;
+  }
+  .hero__scroll {
+    display: none;
+  }
+}

@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/sections/Hero.astro';
+import Services from '../components/sections/Services.astro';
+import Interlude from '../components/sections/Interlude.astro';
+import CityArea from '../components/sections/CityArea.astro';
+---
+
+<BaseLayout
+  title="SAFEPOŻ | Bezpieczeństwo pożarowe z inżynierską precyzją"
+  description="Przeglądy PPOŻ, projekty techniczne i dokumentacja przeciwpożarowa. Inżynierowie bezpieczeństwa pożarowego dla Twojego obiektu."
+  showCities={false}
+  isHome={true}
+>
+  <Hero />
+  <Services />
+  <Interlude />
+  <CityArea />
+</BaseLayout>

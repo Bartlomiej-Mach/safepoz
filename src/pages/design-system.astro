@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ServiceCard from '../components/sections/ServiceCard.astro';
+import { services } from '../data/services.ts';
+import { cities } from '../data/cities.ts';
+---
+
+<BaseLayout title="Design system | SAFEPOŻ" description="Przegląd komponentów i tokenów wizualnych SAFEPOŻ.">
+  <div class="design-system container">
+    <header class="design-system__intro">
+      <p class="eyebrow">SAFEPOŻ / system 01</p>
+      <h1>Design system</h1>
+      <p>Podstawowe kolory, typografia i komponenty interfejsu.</p>
+    </header>
+    <section class="design-system__section" aria-labelledby="color-title">
+      <h2 id="color-title">Kolory</h2>
+      <div class="design-system__swatches">
+        {['navy-900', 'navy-700', 'red-500', 'red-600', 'amber-400', 'gray-50', 'gray-200', 'gray-600', 'text', 'white'].map((name) => (
+          <div class="design-system__swatch"><span class="design-system__color" style={`--swatch: var(--color-${name})`}></span><strong>{name}</strong><code>var(--color-{name})</code></div>
+        ))}
+      </div>
+    </section>
+    <section class="design-system__section" aria-labelledby="type-title">
+      <h2 id="type-title">Typografia</h2>
+      <div class="design-system__type-samples">
+        <div><span>H1 / Barlow Condensed</span><h1>Bezpieczeństwo z precyzją.</h1></div>
+        <div><span>H2 / Barlow Condensed</span><h2>Dokumentacja PPOŻ</h2></div>
+        <div><span>H3 / Barlow Condensed</span><h3>Przeglądy i projekty techniczne</h3></div>
+        <div><span>Eyebrow / Inter</span><p class="eyebrow">Kompleksowa obsługa PPOŻ</p></div>
+        <div><span>Body / Inter 16px, 1.65</span><p>Rozwiązania dopasowane do technicznego stanu budynku i wymagań przepisów.</p></div>
+      </div>
+    </section>
+    <section class="design-system__section" aria-labelledby="button-title">
+      <h2 id="button-title">Przyciski</h2>
+      <div class="design-system__button-row">
+        <a class="btn btn--primary btn--md" href="#button-title">Primary / MD</a>
+        <a class="btn btn--primary btn--lg" href="#button-title">Primary / LG</a>
+        <a class="btn btn--ghost btn--md" href="#button-title">Ghost / MD <i class="btn__icon fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+      </div>
+      <div class="design-system__dark-sample"><a class="btn btn--secondary btn--md" href="#button-title">Secondary / MD</a></div>
+    </section>
+    <section class="design-system__section" aria-labelledby="card-title">
+      <h2 id="card-title">Karty usług</h2>
+      <div class="design-system__cards">
+        {services.slice(0, 2).map((service, index) => <ServiceCard {...service} number={`0${index + 1}`} />)}
+      </div>
+    </section>
+    <section class="design-system__section" aria-labelledby="pill-title">
+      <h2 id="pill-title">Linki miast</h2>
+      <div class="design-system__pills">
+        {cities.slice(0, 6).map((city) => <a class="city-pill" href={`/uslugi-ppoz/${city.slug}`}>{city.name}<i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>)}
+      </div>
+    </section>
+  </div>
+</BaseLayout>

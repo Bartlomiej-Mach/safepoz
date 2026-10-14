@@ -1,0 +1,47 @@
+---
+import { cities } from '../../data/cities.ts';
+---
+
+<section class="city-area section-pad" aria-labelledby="city-area-title" data-city-area>
+  <div class="container">
+    <div class="city-area__intro">
+      <div class="section-heading">
+        <p class="eyebrow">Obszar działania</p>
+        <h2 id="city-area-title">Gdzie realizujemy usługi PPOŻ?</h2>
+        <p class="section-heading__lead">
+          Nasze realizacje prowadzimy głównie na Śląsku. Obsługujemy również obiekty w pozostałych
+          miastach — zapytaj o dostępność terminu i zakres prac.
+        </p>
+      </div>
+      <p class="city-area__count" aria-live="polite" data-city-count></p>
+    </div>
+    <div class="city-area__toolbar">
+      <div class="city-area__tabs" role="tablist" aria-label="Wybierz obszar działania">
+        <button class="city-area__tab is-active" id="tab-slask" type="button" role="tab" aria-selected="true" aria-controls="city-list" data-region="slask">Śląsk</button>
+        <button class="city-area__tab" id="tab-polska" type="button" role="tab" aria-selected="false" aria-controls="city-list" data-region="polska">Cała Polska</button>
+      </div>
+      <label class="city-area__search">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <span class="sr-only">Szukaj miasta</span>
+        <input type="search" placeholder="Wpisz nazwę miasta" autocomplete="off" data-city-search />
+      </label>
+    </div>
+    <ul class="city-area__list" id="city-list" role="tabpanel" aria-labelledby="tab-slask" data-city-list>
+      {cities.map((city) => (
+        <li class="city-area__item" data-city-item data-name={city.name.toLocaleLowerCase('pl')} data-region={city.region}>
+          <a class="city-pill" href={`/uslugi-ppoz/${city.slug}`}>{city.name}<i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+        </li>
+      ))}
+    </ul>
+    <button class="city-area__expand" type="button" aria-expanded="false" data-city-expand>
+      Pokaż wszystkie miasta <i class="fa-solid fa-plus" aria-hidden="true"></i>
+    </button>
+    <p class="city-area__empty" hidden data-city-empty>Nie znaleziono miasta. Sprawdź pisownię lub wybierz inny obszar.</p>
+  </div>
+</section>
+
+<script>
+  import { initCityFilter } from '../../scripts/city-filter';
+
+  initCityFilter();
+</script>

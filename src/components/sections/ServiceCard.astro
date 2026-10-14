@@ -1,0 +1,30 @@
+---
+interface Props {
+  number: string;
+  title: string;
+  description: string;
+  href: string;
+  icon: 'inspection' | 'project' | 'documentation' | 'consulting';
+}
+
+const { number, title, description, href, icon } = Astro.props;
+const iconClasses = {
+  inspection: 'fa-clipboard-check',
+  project: 'fa-compass-drafting',
+  documentation: 'fa-file-lines',
+  consulting: 'fa-comments',
+};
+---
+
+<article class="service-card">
+  <div class="service-card__topline">
+    <span class="service-card__number">{number}</span>
+    <i class:list={['service-card__icon', 'fa-solid', iconClasses[icon]]} aria-hidden="true"></i>
+  </div>
+  <h3 class="service-card__title">{title}</h3>
+  <p class="service-card__description">{description}</p>
+  <a class="btn btn--ghost btn--md service-card__link" href={href}>
+    Dowiedz się więcej
+    <i class="btn__icon fa-solid fa-arrow-right" aria-hidden="true"></i>
+  </a>
+</article>

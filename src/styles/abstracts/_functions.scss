@@ -1,0 +1,11 @@
+// Sass lookup functions for consistent token use.
+@use 'sass:map';
+@use 'tokens' as tokens;
+
+@function spacing($size) {
+  @return map.get(tokens.$spacing, $size);
+}
+
+@function color($name) {
+  @return map.get(tokens.$colors, $name);
+}

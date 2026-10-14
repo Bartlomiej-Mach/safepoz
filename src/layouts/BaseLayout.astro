@@ -1,0 +1,39 @@
+---
+import '../styles/main.scss';
+import '@fortawesome/fontawesome-free/css/fontawesome.css';
+import '@fortawesome/fontawesome-free/css/solid.css';
+import Navbar from '../components/layout/Navbar.astro';
+import Footer from '../components/layout/Footer.astro';
+
+const {
+  title = 'SAFEPOŻ | Inżynieria bezpieczeństwa pożarowego',
+  description = 'Przeglądy, projekty techniczne i dokumentacja PPOŻ dla obiektów budowlanych.',
+  showCities = true,
+  isHome = false,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0B1B2E" />
+    <link rel="canonical" href={`https://safepoz.pl${Astro.url.pathname}`} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  </head>
+  <body class:list={['site-body', { 'site-body--home': isHome }]}>
+    <a class="skip-link" href="#main-content">Przejdź do treści</a>
+    <Navbar />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer showCities={showCities} />
+    <script src="../scripts/main.ts"></script>
+  </body>
+</html>
